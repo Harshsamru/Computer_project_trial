@@ -1,0 +1,108 @@
+MDScreen:
+    name:'createacccount'
+    id: main_win
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            source:"Untitled design (3).png"
+            size: root.width, root.height
+            pos: self.pos
+    MDFloatLayout:
+        MDLabel:
+            text:'CREATE ACCOUNT'
+            font_size:'30sp'
+            font_name:'MRoboto'
+            pos_hint:{'center_x':1.16,'center_y':.80}
+            color:1,1,1,1
+        MDFloatLayout:
+            size_hint:.3,.065
+            pos_hint:{'center_x':.71,'center_y':.65}
+            MDTextField:
+                id: username
+                hint_text: "Username"
+                mode: "fill"
+                font_size:'13sp'
+                hint_text_color_normal: "white"
+                hint_text_color_focus: "white"
+                text_color_normal: "white"
+                pos_hint:{'center_x':.75,'center_y':.9}
+                fill_color_normal:rgba(14,15,26)
+                fill_color_focus:rgba(14,15,26)
+
+
+        MDFloatLayout:
+            size_hint:.3,.065
+            pos_hint:{'center_x':.71,'center_y':.54}
+            MDTextField:
+                id:Password
+                hint_text:'Password'
+                font_size:'13sp'
+                mode:'fill'
+                color:1,1,1,1
+                text_color_normal: "white"
+                hint_text_color_focus: "white"
+                hint_text_color_normal: "white"
+                pos_hint:{'center_x':.75,'center_y':.9}
+                multiline:False
+                password:True
+                fill_color_normal:rgba(14,15,26)
+                fill_color_focus:rgba(14,15,26)
+
+        MDFloatLayout:
+            size_hint:.3,.065
+            pos_hint:{'center_x':.71,'center_y':.43}
+            MDTextField:
+                id:email
+                hint_text:'Email-id'
+                font_size:'13sp'
+                mode:'fill'
+                color:1,1,1,1
+                text_color_normal: "white"
+                hint_text_color_focus: "white"
+                hint_text_color_normal: "white"
+                pos_hint:{'center_x':.75,'center_y':.9}
+                multiline:False
+                fill_color_normal:rgba(14,15,26)
+                fill_color_focus:rgba(14,15,26)
+        MDLabel:
+            text: 'Already have an account?'
+            color:1,1,1,1
+            pos_hint:{'center_x':.815,'center_y':.365}
+            font_size:'13sp'
+            font_name:'MRoboto'
+            halign:'center'
+
+        Button:
+            text:'CREATE'
+            background_color:1,1,1,0
+            size_hint:.3,.065
+            pos_hint:{'center_x':.79,'center_y':.308}
+            font_size:'13sp'
+            on_release:
+                app.send_data(username,Password,email,'create account')
+                if app.variable=='done':\
+                root.manager.transition.direction = 'up';\
+                root.manager.current = 'homepage'
+
+            canvas.before:
+                Color:
+                    rgb:rgba(20,58,153,0)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[22]
+        MDTextButton:
+            text:'Log in'
+            font_size:'13sp'
+            pos_hint:{'center_x':.91,'center_y':.365}
+            halign:'center'
+            font_name:'MRoboto'
+            color:rgba(68,78,132,255)
+            color_normal:''
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'login'

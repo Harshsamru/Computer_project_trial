@@ -1,0 +1,42 @@
+<MySwiper@MDSwiperItem>
+
+MDScreen:
+    MDTopAppBar:
+        id:toolbar
+        title:'Sudoku'
+        elevation:10
+        pos_hint:{'top':1}
+    MDSwiper:
+        size_hint_y:None
+        height:root.height-toolbar.height-dp(40)
+        y:root.height - self.height - toolbar.height - dp(20)
+
+        MySwiper:
+            FitImage:
+                source: "element1.png"
+                pos_hint:{'center_y':.7}
+                radius: [20,]
+
+        MySwiper:
+            FitImage:
+                source: "element2.png"
+                pos_hint:{'center_y':.7}
+                radius: [20,]
+
+        MySwiper:
+            FitImage:
+                source: "design-1.jpg"
+                pos_hint:{'center_y':.7}
+                radius: [20,]
+
+        MySwiper:
+            FitImage:
+                source: "design-1.jpg"
+                pos_hint:{'center_y':.7}
+                radius: [20,]
+
+        MySwiper:
+            FitImage:
+                source: "design-1.jpg"
+                pos_hint:{'center_y':.7}
+                radius: [20,]

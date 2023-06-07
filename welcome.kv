@@ -1,0 +1,65 @@
+MDScreen:
+    name:'welcome'
+    id: main_win
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            source:"Untitled design (3).png"
+            size: root.width, root.height
+            pos: self.pos
+
+    MDFloatLayout:
+        Image:
+            source: 'project_logo.png'
+            size_hint_x: 0.2
+            pos_hint:{'center_x':.79,'center_y':.75}
+        Button:
+            text: 'Login'
+            size_hint:.3,.065
+            pos_hint:{'center_x':.79,'center_y':.51}
+            background_color:0,0,0,0
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current='login'
+            canvas.before:
+                Color:
+                    rgb:rgba(20,58,153,0)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[23]
+
+        Button:
+            text: 'Create Account'
+            size_hint:.3,.065
+            pos_hint:{'center_x':.79,'center_y':.39}
+            background_color:0,0,0,0
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current='createacccount'
+            canvas.before:
+                Color:
+                    rgb:rgba(20,58,153,0)
+                Line:
+                    width:1
+                    rounded_rectangle:self.x,self.y,self.width,self.height,23,23,23,23,100
+
+        MDLabel:
+            text: 'OR'
+            color:1,1,1,1
+            pos_hint:{'center_x':.79,'center_y':.45}
+            font_size:'13sp'
+            font_name:'MRoboto'
+            halign:'center'
+        MDFloatLayout:
+            md_bg_color:rgba(178,178,178,255)
+            size_hint:.17,.002
+            pos_hint:{'center_x':.89,'center_y':.448}
+        MDFloatLayout:
+            md_bg_color:rgba(178,178,178,255)
+            size_hint:.17,.002
+            pos_hint:{'center_x':.69,'center_y':.448}

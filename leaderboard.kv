@@ -1,0 +1,73 @@
+<DrawerClickableItem@MDNavigationDrawerItem>
+    focus_color: "#081846"
+    text_color: "#ffffff"
+    icon_color: "#ffffff"
+    ripple_color: "#c5bdd2"
+    selected_color: "#0c6c4d"
+<DrawerLabelItem@MDNavigationDrawerItem>
+    text_color: "#4a4939"
+    icon_color: "#4a4939"
+    focus_behavior: False
+    selected_color: "#4a4939"
+    _no_ripple_effect: True
+MDScreen:
+    name:'leaderboard'
+    id: main_win
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+    MDSegmentedControl:
+        pos_hint: {"center_x": .5, "center_y": .8}
+        segment_color: "#081846"
+        MDSegmentedControlItem:
+            text: "Top 10"
+        MDSegmentedControlItem:
+            text: "Top 100"
+        MDSegmentedControlItem:
+            text: "All"
+    MDNavigationLayout:
+        MDScreenManager:
+            MDScreen:
+                MDTopAppBar:
+                    title: "LEADERBOARD"
+                    elevation: 4
+                    pos_hint: {"top": 1}
+                    md_bg_color: "#081846"
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+        MDNavigationDrawer:
+            id: nav_drawer
+            radius: (0, 16, 16, 0)
+            MDNavigationDrawerMenu:
+                MDNavigationDrawerHeader:
+                    title: "Username"
+                    title_color: "#4a4939"
+                    text: "Header text"
+                    spacing: "4dp"
+                    padding: "12dp", 0, 0, "56dp"
+                DrawerClickableItem:
+                    icon: "home"
+                    text: "Home"
+                    on_release:
+                        root.manager.transition.direction = 'right'
+                        root.manager.current='homepage'
+                DrawerClickableItem:
+                    icon: "cog-outline"
+                    text: "Settings"
+                    on_release:
+                        root.manager.transition.direction = 'up'
+                        root.manager.current='settings'
+                DrawerClickableItem:
+                    icon: "search-web"
+                    text: "References"
+                DrawerClickableItem:
+                    icon: "exit-to-app"
+                    text: "Exit"
+                    on_release:
+                        Window.close()
+                MDNavigationDrawerDivider:
+                DrawerClickableItem:
+                    text: "Log Out"
+                    icon:'logout'
+                    on_release:
+                        root.manager.transition.direction = 'down'
+                        root.manager.current='welcome'

@@ -1,0 +1,93 @@
+<TooltipMDIconButton@MDIconButton+MDTooltip>
+MDScreen:
+    name:'settings'
+    id: main_win
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            id:sud_background
+            source:"SUDOKU (2).png"
+            size: root.width, root.height
+            pos: self.pos
+    MDFloatLayout:
+        MDFloatingActionButton:
+            id: profile
+            icon:'account'
+            type:'standard'
+            md_bg_color:"#fefbff"
+            theme_icon_color:"Custom"
+            icon_color:"#6851a5"
+            pos_hint: {"center_x": .034, "center_y": .89}
+        TooltipMDIconButton:
+            icon: "home"
+            tooltip_text:'Home'
+            theme_icon_color: "Custom"
+            icon_color: "#fefbff"
+            pos_hint: {"center_x": .034, "center_y": .72}
+            on_release:
+                root.manager.transition.direction = 'right'
+                root.manager.current='homepage'
+        TooltipMDIconButton:
+            icon: "account-supervisor"
+            tooltip_text:'Leaderboard'
+            theme_icon_color: "Custom"
+            icon_color: "#fefbff"
+            pos_hint: {"center_x": .034, "center_y": .62}
+            on_release:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'leaderboard'
+        TooltipMDIconButton:
+            icon: "cog-outline"
+            tooltip_text:'Settings'
+            theme_icon_color: "Custom"
+            icon_color: "#fefbff"
+            pos_hint: {"center_x": .034, "center_y": .52}
+            on_release:
+                root.manager.transition.direction = 'up'
+                root.manager.current = 'settings'
+        TooltipMDIconButton:
+            icon: "search-web"
+            tooltip_text:'References'
+            theme_icon_color: "Custom"
+            icon_color: "#fefbff"
+            pos_hint: {"center_x": .034, "center_y": .42}
+        TooltipMDIconButton:
+            icon: "exit-to-app"
+            tooltip_text:'Exit'
+            theme_icon_color: "Custom"
+            icon_color: "#fefbff"
+            pos_hint: {"center_x": .034, "center_y": .32}
+            on_release:
+                Window.close()
+        TooltipMDIconButton:
+            icon: 'logout'
+            tooltip_text:'Logout'
+            theme_icon_color: "Custom"
+            icon_color: "#fefbff"
+            pos_hint: {"center_x": .034, "center_y": .12}
+            on_release:
+                app.SNO += 1
+                root.manager.transition.direction = 'down'
+                root.manager.current = 'welcome'
+        MDSwitch:
+            pos_hint: {'center_x': .9, 'center_y': .7}
+            icon_active: "check"
+            #active:True
+            icon_inactive: "close"
+            icon_inactive_color: "grey"
+            icon_active_color: "white"
+            track_color_active: "#081846"
+            on_active:app.source='SUDOKU (1).PNG'
+        MDSwitch:
+            pos_hint: {'center_x': .9, 'center_y': .54}
+            icon_active: "check"
+            active:True
+            icon_inactive: "close"
+            icon_inactive_color: "grey"
+            icon_active_color: "white"
+            track_color_active: "#081846"
+            on_active:app.source='SUDOKU (1).PNG'

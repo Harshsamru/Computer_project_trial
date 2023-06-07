@@ -1,0 +1,97 @@
+MDScreen:
+    name:'login'
+    id: main_win
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/3
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            source:"Untitled design (3).png"
+            size: root.width, root.height
+            pos: self.pos
+    MDFloatLayout:
+        MDLabel:
+            text:'LOG IN'
+            font_size:'40sp'
+            font_name:'MRoboto'
+            pos_hint:{'center_x':1.222,'center_y':.80}
+            color:1,1,1,1
+        MDFloatLayout:
+            size_hint:.3,.065
+            pos_hint:{'center_x':.71,'center_y':.65}
+            MDTextField:
+                id :username
+                hint_text: "Username"
+                mode: "fill"
+                font_size:'13sp'
+                hint_text_color_normal: "white"
+                hint_text_color_focus: "white"
+                text_color_normal: "white"
+                pos_hint:{'center_x':.75,'center_y':.9}
+                fill_color_normal:rgba(14,15,26)
+                fill_color_focus:rgba(14,15,26)
+
+        MDFloatLayout:
+            size_hint:.3,.065
+            pos_hint:{'center_x':.71,'center_y':.54}
+            MDTextField:
+                id:password
+                hint_text:'Password'
+                font_size:'13sp'
+                mode:'fill'
+                color:1,1,1,1
+                text_color_normal: "white"
+                hint_text_color_focus: "white"
+                hint_text_color_normal: "white"
+                pos_hint:{'center_x':.75,'center_y':.9}
+                multiline:False
+                password:True
+                fill_color_normal:rgba(14,15,26)
+                fill_color_focus:rgba(14,15,26)
+        Button:
+            text:'CONTINUE'
+            background_color:1,1,1,0
+            size_hint:.3,.065
+            pos_hint:{'center_x':.79,'center_y':.395}
+            font_size:'13sp'
+            on_release:
+                app.send_data(username,password,'email','login',)
+                if app.variable=='done':\
+                root.manager.transition.direction = 'up';\
+                root.manager.current = 'homepage'
+            canvas.before:
+                Color:
+                    rgb:rgba(20,58,153,0)
+                RoundedRectangle:
+                    size:self.size
+                    pos:self.pos
+                    radius:[22]
+        MDLabel:
+            text: "Don't have an account?"
+            color:1,1,1,1
+            pos_hint:{'center_x':.774,'center_y':.45}
+            font_size:'13sp'
+            font_name:'MRoboto'
+            halign:'center'
+        MDTextButton:
+            text:'Create account'
+            color:rgba(68,78,132,255)
+            pos_hint:{'center_x':.885,'center_y':.45}
+            halign:'center'
+            font_name:'MRoboto'
+            font_size:'13sp'
+            on_release:
+                root.manager.transition.direction = 'left'
+                root.manager.current = 'createacccount'
+        MDTextButton:
+            text:'Forgot Password?'
+            color:rgba(255,255,255,255)
+            pos_hint:{'center_x':.88,'center_y':.50}
+            halign:'center'
+            font_name:'MRoboto'
+            font_size:'13sp'
+            on_release:
+                root.manager.transition.direction = 'right'
+                root.manager.current = 'resetpassword'
